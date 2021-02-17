@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="jumbotron text-center">
+        <h1>Bienvenue sur la page homepage</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus posuere risus et libero varius, a maximus diam laoreet. Duis in nunc commodo enim pellentesque posuere nec et lacus. Duis venenatis sapien sed lorem pharetra, nec cursus orci vehicula. Mauris sem orci, elementum id congue id, placerat vel nulla. Etiam in elementum risus. Donec in est porttitor mauris faucibus aliquam a ac purus. Nulla pharetra enim eget mauris facilisis ultricies.
+        </p>
+        <button type="button" class="btn btn-secondary">Secondary</button>
+    </div>
+    <div class="card" style="width: 18rem;">
+        <img src="..." class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">Maison 1</h5>
+            <p class="card-text">c'est juste la maison 1</p>
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+                <a href="https://www.youtube.com/watch?v=p1kNNrSxZEM" class="card-link">voir la vue 3d</a>
+            </li>
+            <li class="list-group-item">
+                <a href="https://www.google.fr/maps/@48.9457833,2.1433288,3a,75y,291.5h,108.3t/data=!3m6!1e1!3m4!1sIczbaCsUxIJ3CJGN8vKPiQ!2e0!7i16384!8i8192" class="card-link">voir la geolocalisation</a>
+            </li>
+            <li class="list-group-item">
+                <a href="http://127.0.0.1:8000/maison1" class="card-link">acheter</a>
+            </li>
+        </ul>
+    </div>
+{% endblock %}
