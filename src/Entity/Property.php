@@ -206,6 +206,12 @@ class Property
         return $this;
     }
 
+    public function getHeatType(): string
+    {
+        return self::HEAT[$this->heat];
+
+    }
+
     public function getCity(): ?string
     {
         return $this->city;
