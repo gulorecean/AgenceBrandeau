@@ -1,23 +1,22 @@
 <?php
 namespace App\Controller;
 
-
-
+use App\Repository\PropertyRepository;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Twig\Environment;
 
-class PropertyController
+class PropertyController extends AbstractController
 {
-
     /**
-     * @var Environment
+     * @var PropertyRepository
      */
-    private $twig;
+    private $repository;
 
-    public function __construct(Environment $twig)
+
+    public function __construct(PropertyRepository $repository)
     {
-        $this->twig = $twig;
+        $this->repository = $repository;
     }
 
     /**
@@ -27,16 +26,23 @@ class PropertyController
 
     public function index () :Response
     {
-        return new Response($this->twig->render('pages/index.html.twig'));
-
+        $properties = $this->repository->findLatest();
+        dump($properties);
+        return $this->render('pages/index.html.twig',[
+            'properties' => $properties
+        ]);
     }
     /**
-     * @Route("/maison1", name="test1.index")
+     * @Route("/biens/{slug}-{id}", name="property.show", requirements={"slug": "[a-z0-9\-]*"})
      * @return Response
      */
-    public function test1 () :Response
+    public function show($slug, $id): Response
     {
-        return new Response($this->twig->render('pages/maison1.html.twig'));
+        $property = $this->repository->find($id);
+        return $this->render('property/show.html.twig', [
+            'property' => $property,
+            'current_menu' => 'properties'
+        ]);
     }
 
 }
